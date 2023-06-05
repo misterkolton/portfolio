@@ -8,13 +8,14 @@ type AboutMeProps = {
 }
 
 const AboutMe = (props: AboutMeProps) => {
-  const { title, description, slug } = props
-
+  const { title, description, slug, heroImage } = props
+  console.log(heroImage)
   return (
     <div>
       <h1>{title} </h1>
       <h1>{description} </h1>
       <h1>{slug} </h1>
+      <img src={heroImage} alt="Hero" />
     </div>
   )
 }
@@ -43,6 +44,7 @@ export const getStaticProps: GetStaticProps<AboutMeProps> = async () => {
       title: data.blogPage.title,
       description: data.blogPage.description,
       slug: data.blogPage.slug,
+      heroImage: data.blogPage.heroImage.url,
     },
   }
 }
