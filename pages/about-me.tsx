@@ -8,7 +8,7 @@ type AboutMeProps = {
 }
 
 const AboutMe = (props: AboutMeProps) => {
-  const { title, description, slug, heroImage } = props
+  const { title, description, heroImage } = props
 
   const formatDescription = (html: string) => {
     const paragraphs = html.split("\n").map((paragraph, index) => (
