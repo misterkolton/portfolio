@@ -9,16 +9,27 @@ type AboutMeProps = {
 
 const AboutMe = (props: AboutMeProps) => {
   const { title, description, slug, heroImage } = props
-  console.log(heroImage)
+
+  const formatDescription = (html: string) => {
+    const paragraphs = html.split("\n").map((paragraph, index) => (
+      <p key={index}>{paragraph}</p>
+    ));
+    return paragraphs;
+  }
+
   return (
     <div>
-      <h1>{title} </h1>
-      <h1>{description} </h1>
-      <h1>{slug} </h1>
-      <img src={heroImage} alt="Hero" />
+      <div style={{ width: '100%', justifyContent: 'center', alignContent: 'center', display: 'flex' }}>
+        <h1>{title}</h1>
+      </div>
+        <div>{formatDescription(description)}</div>
+      <div style={{ width: '100%', justifyContent: 'center', alignContent: 'center', display: 'flex' }}>
+        <img src={heroImage} style={{ width: '220px', borderRadius: '12px' }} alt="Hero" />
+      </div>
     </div>
   )
 }
+
 export const getStaticProps: GetStaticProps<AboutMeProps> = async () => {
   const query = `
     query AboutMeQuery {
@@ -31,7 +42,7 @@ export const getStaticProps: GetStaticProps<AboutMeProps> = async () => {
         }
       }
     }
-`
+  `
 
   const body = { query }
   const res = await fetch(process.env.API_ENDPOINT, {
@@ -48,4 +59,5 @@ export const getStaticProps: GetStaticProps<AboutMeProps> = async () => {
     },
   }
 }
+
 export default AboutMe
