@@ -18,12 +18,12 @@ const AboutMe = (props: AboutMeProps) => {
   }
 
   return (
-    <div>
+    <div style={{ margin: '24px', fontFamily: 'Poppins, sans-serif' }}>
       <div style={{ width: '100%', justifyContent: 'center', alignContent: 'center', display: 'flex' }}>
-        <h1>{title}</h1>
+        <h1 style={{fontFamily: 'Poppins, sans-serif' }}>{title}</h1>
       </div>
-        <div>{formatDescription(description)}</div>
-      <div style={{ width: '100%', justifyContent: 'center', alignContent: 'center', display: 'flex' }}>
+      <div style={{fontFamily: 'Poppins, sans-serif' }}>{formatDescription(description)}</div>
+      <div style={{ paddingTop: '24px', width: '100%', justifyContent: 'center', alignContent: 'center', display: 'flex', fontFamily: 'Poppins, sans-serif' }}>
         <img src={heroImage} style={{ width: '220px', borderRadius: '12px' }} alt="Hero" />
       </div>
     </div>
