@@ -1,3 +1,4 @@
+import React from "react"
 import { GetStaticProps } from "next"
 
 type AboutMeProps = {
@@ -11,20 +12,42 @@ const AboutMe = (props: AboutMeProps) => {
   const { title, description, heroImage } = props
 
   const formatDescription = (html: string) => {
-    const paragraphs = html.split("\n").map((paragraph, index) => (
-      <p key={index}>{paragraph}</p>
-    ));
-    return paragraphs;
+    const paragraphs = html
+      .split("\n")
+      .map((paragraph, index) => <p key={index}>{paragraph}</p>)
+    return paragraphs
   }
 
   return (
-    <div style={{ margin: '24px', fontFamily: 'Poppins, sans-serif' }}>
-      <div style={{ width: '100%', justifyContent: 'center', alignContent: 'center', display: 'flex' }}>
-        <h1 style={{fontFamily: 'Poppins, sans-serif' }}>{title}</h1>
+    <div style={{ margin: "24px", fontFamily: "Poppins, sans-serif" }}>
+      <div
+        style={{
+          width: "100%",
+          justifyContent: "center",
+          alignContent: "center",
+          display: "flex",
+        }}
+      >
+        <h1 style={{ fontFamily: "Poppins, sans-serif" }}>{title}</h1>
       </div>
-      <div style={{fontFamily: 'Poppins, sans-serif' }}>{formatDescription(description)}</div>
-      <div style={{ paddingTop: '24px', width: '100%', justifyContent: 'center', alignContent: 'center', display: 'flex', fontFamily: 'Poppins, sans-serif' }}>
-        <img src={heroImage} style={{ width: '220px', borderRadius: '12px' }} alt="Hero" />
+      <div style={{ fontFamily: "Poppins, sans-serif" }}>
+        {formatDescription(description)}
+      </div>
+      <div
+        style={{
+          paddingTop: "24px",
+          width: "100%",
+          justifyContent: "center",
+          alignContent: "center",
+          display: "flex",
+          fontFamily: "Poppins, sans-serif",
+        }}
+      >
+        <img
+          src={heroImage}
+          style={{ width: "220px", borderRadius: "12px" }}
+          alt="Hero"
+        />
       </div>
     </div>
   )
@@ -32,7 +55,7 @@ const AboutMe = (props: AboutMeProps) => {
 
 export const getStaticProps: GetStaticProps<AboutMeProps> = async () => {
   const query = `
-    query AboutMeQuery {
+    query AboutMeQuery { 
       blogPage(where: {slug: "about-me"}) {
         title
         slug
